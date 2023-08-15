@@ -1,0 +1,17 @@
+* {
+    margin: 1rem;
+}
+
+.font-size {
+    font-size: 3rem;
+}
+
+p {
+    margin-top: 6rem;
+}
+
+@media screen and (max-width: 600px) {
+    .font-size {
+        font-size: 1rem;
+    }
+}
