@@ -13,9 +13,10 @@ function convertToText(number) {
 
     if(number == 0) 
         return "zero";
-
+    else if(number.length >= 16)
+        return "number should be less than 15 characters.";
     else
-        return convertMillions(number);
+        return convertTrillion(number);
     
     function convertTens(number) {
        if(number < 10)
@@ -35,26 +36,33 @@ function convertToText(number) {
     }
     function convertHundreds(number) {
         if(number > 99)
-            return ones[Math.floor(number / 100)] + ' hundred ' + convertTens(number%100);
+            return ones[Math.floor(number / 100)] + ' hundred ' + convertTens(number % 100);
         else 
-            return convertTens(number)
+            return convertTens(number);
     }
-    function convertThousands(number) {
-        if(number > 999 && number <= 99999) 
-            return convertTens(Math.floor(number/1000)) + ' thousand ' + convertHundreds(number % 1000);
-        else if(number > 99999 && number <=999999) 
-            return convertHundreds(Math.floor(number/1000)) + ' thousand ' + convertHundreds(number % 1000);
+    function convertThousands(number) { 
+        if(number > 999) 
+            return convertHundreds(Math.floor(number / 1000)) + ' thousand ' + convertHundreds(number % 1000);
         else 
             return convertHundreds(number);
     }
-    function convertMillions() {
-    // && number <= 99999999
-        if(number > 999999 && number <= 99999999) 
-            return convertTens(Math.floor(number/1000000)) + ' million ' + convertThousands(Math.floor(number %1000000));
-        else if(number > 99999999 && number <= 999999999) 
-            return convertHundreds(Math.floor(number/1000000)) + ' million ' + convertThousands(Math.floor(number %1000000));
+    function convertMillions(number) {
+         if(number > 999999) 
+            return convertThousands(Math.floor(number / 1000000)) + ' million ' + convertThousands(number % 1000000);
         else 
             return convertThousands(number);
+    }
+    function convertBillion(number) {
+        if(number > 999999999)
+            return convertMillions(Math.floor(number / 1000000000)) + ' billion ' + convertMillions(number % 1000000000);
+        else    
+            return convertMillions(number);
+    }
+    function convertTrillion(number) {
+        if(number > 999999999999)
+            return convertBillion(Math.floor(number / 1000000000000)) + ' trillion ' + convertBillion(number % 1000000000000);
+        else    
+            return convertBillion(number);
     }
 
 }
