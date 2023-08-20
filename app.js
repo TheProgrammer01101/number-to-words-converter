@@ -6,10 +6,10 @@ const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'si
 const tens = ['','','twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 
 inputHTML.addEventListener('input', () => {
-    outputHTML.innerHTML = "Output: " + convertToText(inputHTML.value);
+    outputHTML.innerHTML = "Output: " + convertToWords(inputHTML.value);
 })
 
-function convertToText(number) {
+function convertToWords(number) {
 
     if(number == 0) 
         return "zero";
